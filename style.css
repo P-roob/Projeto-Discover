@@ -79,6 +79,8 @@ body * {
   border: 0;
   border-radius: 50%;
 
+  animation: slide-out 0.4s;
+
   /* quando usamos o position absolute podemos usar o 
   z-index para mudar as sobreposição de camadas */
   /* top: 50%; e transform: translateY(-50%); é pra alinhar ao centro */
@@ -91,8 +93,11 @@ body * {
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 /* por padrão o span tem display in line, precisamos passar ele para display block */
@@ -188,5 +193,25 @@ footer {
 .light {
       --bg-url: url(./assets/bg-desktop-light.jpg);
 
+  }
+}
+
+/* animations */
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
